@@ -1,0 +1,32 @@
+
+<ion-header id="content1">
+  <ion-toolbar>
+    <div>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    </div>
+    <ion-title justify-content-center>
+      <h2 *ngIf="this.currentUser?.role === 'User'">{{this.currentUser?.role}} Page</h2>
+      <h2 *ngIf="this.currentUser?.role === 'Admin'">{{this.currentUser?.role}} Page</h2>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="primary" padding id="content1">
+  <h3>{{this.currentUser?.role}}</h3>
+    <app-user  *ngIf="this.currentUser?.role === 'User'"></app-user>
+    <app-admin *ngIf="this.currentUser?.role === 'Admin'"></app-admin>
+</ion-content>
+<ion-menu side="start" menuId="first" contentId="content1">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Navigate</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list *ngFor="let menu of menuValue; let i = index">
+          <ion-item>{{menu?.menu1}}</ion-item>
+          <ion-item>{{menu?.menu2}}</ion-item>
+        </ion-list>
+      </ion-content>
+</ion-menu>
