@@ -25,12 +25,10 @@ export class HomePage {
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
-    alert('ok');
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
-      alert('ok');
         return;
     }
     console.log('this.loginForm.value', this.f.username.value)
@@ -39,20 +37,13 @@ export class HomePage {
     .subscribe(
         data => {
           console.log('data', data);
-          this.router.navigate(['/role']);
-          // if(data.role === 'Admin') {
-          //   this.router.navigate(['/admin']);
-          // }else {
-          //   this.router.navigate(['/user']);
-          // }   
+          this.router.navigate(['/role']); 
         },
         error => {
             this.error = error;
             alert(this.error)
             console.log('this.error', this.error);
         });
-
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value))
 }
 
 }
