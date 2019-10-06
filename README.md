@@ -1,4 +1,4 @@
-To start the project please flow these step.
+To start the project please follow these step.
 open the terminal.
 First, install Node.js. Then, install the latest Ionic command-line tools in your terminal.
 Install the ionic:- npm install -g ionic
