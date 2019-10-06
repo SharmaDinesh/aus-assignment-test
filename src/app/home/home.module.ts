@@ -4,10 +4,6 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-// import { ErrorInterceptor } from '../_helpers/error.interceptor';
-// import { JwtInterceptor } from '../_helpers/jwt.interceptor';
-// import { fakeBackendProvider } from '../_helpers/fake';
 import { HomePage } from './home.page';
 
 @NgModule({
@@ -15,7 +11,6 @@ import { HomePage } from './home.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    // HttpClientModule,
     ReactiveFormsModule,
 
     RouterModule.forChild([
@@ -25,13 +20,6 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-//   providers: [
-//     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-//     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-//     // provider used to create fake backend
-//     fakeBackendProvider
-// ],
   declarations: [HomePage]
 })
 export class HomePageModule {}

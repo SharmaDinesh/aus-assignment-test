@@ -40,33 +40,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     token: `fake-jwt-token.${user.role}`
                 });
             }
-
-            // get user by id - admin or user (user can only access their own record)
-            if (request.url.match(/\/users\/\d+$/) && request.method === 'GET') {
-                if (!isLoggedIn) return unauthorised();
-
-                // get id from request url
-                let urlParts = request.url.split('/');
-                let id = parseInt(urlParts[urlParts.length - 1]);
-
-                // only allow normal users access to their own record
-                const currentUser = users.find(x => x.role === role);
-                if (id !== currentUser.id && role !== Role.Admin) return unauthorised();
-
-                const user = users.find(x => x.id === id);
-                return ok(user);
-            }
-
-            // get all users (admin only)
-            if (request.url.endsWith('/users') && request.method === 'GET') {
-                if (role !== Role.Admin) return unauthorised();
-                return ok(users);
-            }
-
             // pass through any requests not handled above
-            return next.handle(request);
+            // return next.handle(request);
         }))
-        // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
         .pipe(materialize())
         .pipe(delay(500))
         .pipe(dematerialize());
