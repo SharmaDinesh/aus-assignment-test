@@ -41,7 +41,7 @@
     </ion-tabs> -->
     <ion-tabs>
         <ion-tab-bar slot="bottom" style="background-color: #FFFFFF;">
-          <ion-tab-button tab="schedule" style="background-color: #FFFFFF; color: gray" 
+          <ion-tab-button tab="role/{{this?.currentUser?.role.charAt(0).toLowerCase() + this.currentUser?.role.slice(1)}}" style="background-color: #FFFFFF; color: gray" 
                           [ngClass]="{'active': activeId === 1 }" id="1" (click)="goToHome(1)">
             <ion-icon name="home"></ion-icon>
             <ion-label>Home</ion-label>

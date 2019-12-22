@@ -13,18 +13,14 @@ export class SidemenuComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.events.subscribe((url:any) => {
-      if(url.url === undefined) {
-        this.currentUrl = this.router.url;
-      }else {
-        this.currentUrl = url.url;
-      }
-    }); 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
     console.log('currentUser', this.currentUser.role);
     console.log('currentUrl', this.router.url);
+    this.stateUrlAccess();
     if(this.currentUser.role === 'Admin') {
       this.router.navigate(['role/admin']);
+      this.currentUrl = this.router.url
+      // this.stateUrlAccess();
       this.menuValue = [{
         menu1: 'Profile',
         menu2: 'Dashboard'
@@ -32,11 +28,24 @@ export class SidemenuComponent implements OnInit {
       console.log('this.menuValue', this.menuValue);
     }else {
       this.router.navigate(['role/user']);
+      this.currentUrl = this.router.url
+      // this.stateUrlAccess();
       this.menuValue = [{
         menu1: 'Availability',
         menu2: 'Job History'
       }]
     } 
+  }
+
+  stateUrlAccess() {
+    this.router.events.subscribe((url:any) => {
+      if(url.url === undefined) {
+        this.currentUrl = this.router.url;
+        console
+      }else {
+        this.currentUrl = url.url;
+      }
+    }); 
   }
 
 }
