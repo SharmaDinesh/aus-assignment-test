@@ -3,6 +3,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './user/user.component'
 import { AdminComponent } from './admin/admin.component'
 import { SidemenuComponent } from './sidemenu/sidemenu.component'
+import { BusinessAndCustomerComponent } from './business-and-customer/business-and-customer.component'
+import { SignupComponent } from './signup/signup.component'
+import { ProfileComponent } from './profile/profile.component'
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -11,8 +14,11 @@ const routes: Routes = [
     children: [
       { path: 'user', component: UserComponent, pathMatch: 'full' },
       { path: 'admin', component: AdminComponent, pathMatch: 'full' },
+      { path: ':findProfile/profile', component: ProfileComponent, pathMatch: 'full' },
     ]
   },
+  { path: 'select/role', component: BusinessAndCustomerComponent, pathMatch: 'full'},
+  { path: 'signup/:accessRole', component: SignupComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

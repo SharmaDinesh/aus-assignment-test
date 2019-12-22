@@ -1,3 +1,8 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-router-outlet>
+
+  </ion-router-outlet>
+  <div *ngIf="currentUrl === '/role/admin' || currentUrl === '/role/Admin/profile' ">
+    <app-tabs style="background-color: #53A318; color:white"></app-tabs>
+  </div>
 </ion-app>

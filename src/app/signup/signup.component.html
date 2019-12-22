@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="background-color: #EA640A; color:white" justify-content-center>
+      Signup
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content color="" padding>
+    <div *ngIf="this.accessRole === 'business'">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <ion-grid>
+          <ion-row color="" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div text-center>
+                <span class="role-size">{{this.accessRole.charAt(0).toUpperCase() + this.accessRole.slice(1)}} Sign Up</span>
+              </div>
+              <div padding>
+                <ion-item>
+                  <ion-input name="businessname" type="text" placeholder="Business Name" formControlName="businessname" class="form-control input-placeholder-size" [ngClass]="{ 'is-invalid': submitted && f.businessname.errors }"></ion-input>
+                  <div *ngIf="submitted && f.businessname.errors" class="invalid-feedback">
+                      <div *ngIf="f.businessname.errors.required">Business Name is required</div>
+                    </div>
+                </ion-item>
+                <br /><br />
+                <ion-item>
+                <ion-input name="address" type="text" placeholder="Address" formControlName="address" class="form-control input-placeholder-size" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></ion-input>
+                <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                    <div *ngIf="f.address.errors.required">Address is required</div>
+                  </div>
+                </ion-item>
+                <br /><br />
+                <ion-item>
+                <ion-input name="contactnumber" type="text" placeholder="Contact Number" formControlName="contactnumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contactnumber.errors }"></ion-input>
+                <div *ngIf="submitted && f.contactnumber.errors" class="invalid-feedback">
+                    <div *ngIf="f.contactnumber.errors.required">Contact Number is required</div>
+                  </div>
+                </ion-item>
+                <br /><br />
+                <ion-item>
+                <ion-input name="businesstype" type="text" placeholder="Business Type" formControlName="businesstype" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.businesstype.errors }"></ion-input>
+                <div *ngIf="submitted && f.businesstype.errors" class="invalid-feedback">
+                    <div *ngIf="f.businesstype.errors.required">Business Type is required</div>
+                  </div>
+                </ion-item>
+                <br /><br />
+                <ion-item>
+                <ion-input name="description" type="text" placeholder="Description" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></ion-input>
+                <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                    <div *ngIf="f.description.errors.required">Description is required</div>
+                  </div>
+                </ion-item>
+                <br /><br />
+                <ion-item>
+                <ion-input name="websiteurl" type="text" placeholder="Website Url" formControlName="websiteurl" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.websiteurl.errors }"></ion-input>
+                <div *ngIf="submitted && f.websiteurl.errors" class="invalid-feedback">
+                    <div *ngIf="f.websiteurl.errors.required">Website Url is required</div>
+                  </div>
+                </ion-item>
+              </div>
+              <div padding>
+                <ion-button size="large" type="submit"  expand="block">Signup</ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+      </div>
+      <div *ngIf="this.accessRole === 'customer'">
+          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <ion-grid>
+              <ion-row color="primary" justify-content-center>
+                <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                  <div text-center>
+                    <span class="role-size" >{{this.accessRole.charAt(0).toUpperCase() + this.accessRole.slice(1)}} Sign Up</span>
+                  </div><br />
+                  <div padding>
+                    <ion-item>
+                      <ion-input name="customername" type="text" placeholder="Customer Name" formControlName="customername" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.customername.errors }"></ion-input>
+                      <div *ngIf="submitted && f.customername.errors" class="invalid-feedback">
+                          <div *ngIf="f.customername.errors.required">Customer Name is required</div>
+                        </div>
+                    </ion-item>
+                    <br /><br />
+                    <ion-item>
+                    <ion-input name="customeremail" type="text" placeholder="Customer Email" formControlName="customeremail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.customeremail.errors }"></ion-input>
+                    <div *ngIf="submitted && f.customeremail.errors" class="invalid-feedback">
+                        <div *ngIf="f.customeremail.errors.required">Address is required</div>
+                      </div>
+                    </ion-item> 
+                  </div>
+                  <div padding>
+                    <ion-button size="large" type="submit"  expand="block">Signup</ion-button>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </form>
+          </div>
+    </ion-content>

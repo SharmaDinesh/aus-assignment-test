@@ -24,3 +24,64 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+ion-content{
+
+    --ion-background-color:#EEEEEE;
+}
+
+.hdg-size {
+    font-size: 50px;
+}
+
+.txt-size {
+    font-size: 14px;
+    color: #909090
+}
+
+.input-placeholder-size {
+    font-size: 15px;
+}
+
+.role-size {
+    color: #53A318; 
+    font-size: 30px;
+}
+
+.active {
+    color: #53A318 !important;
+}
+.custom-buttom {
+    // background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    // margin: 4px 2px;
+    cursor: pointer;
+    outline: none;
+    width: 130px;
+  }
+
+  .small-custom-buttom {
+    border: none;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    // margin: 4px 2px;
+    cursor: pointer;
+    outline: none;
+    width: 100px;
+  } 
+
+  .button1 {
+    background-color: white; 
+    color: grey; 
+    border: 1.5px solid lightgray;
+    border-radius: 12px;
+  }

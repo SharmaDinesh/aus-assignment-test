@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  private loginForm: FormGroup;
-  private submitted = false;
+  public loginForm: FormGroup;
+  public submitted = false;
   private error = ''
   constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router) {}
 
@@ -37,13 +37,17 @@ export class HomePage {
     .subscribe(
         data => {
           console.log('data', data);
-          this.router.navigate(['/role']); 
+          this.router.navigate(['/role']);
         },
         error => {
             this.error = error;
             alert(this.error)
             console.log('this.error', this.error);
         });
+}
+
+goToBusinessAndCustomerPage() {
+  this.router.navigate(['/select/role']);
 }
 
 }

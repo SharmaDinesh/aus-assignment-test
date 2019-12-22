@@ -8,12 +8,21 @@ import { Router } from '@angular/router';
 })
 export class SidemenuComponent implements OnInit {
   public currentUser: any
+  public currentUrl: any;
   public menuValue: any
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.router.events.subscribe((url:any) => {
+      if(url.url === undefined) {
+        this.currentUrl = this.router.url;
+      }else {
+        this.currentUrl = url.url;
+      }
+    }); 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
     console.log('currentUser', this.currentUser.role);
+    console.log('currentUrl', this.router.url);
     if(this.currentUser.role === 'Admin') {
       this.router.navigate(['role/admin']);
       this.menuValue = [{

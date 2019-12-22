@@ -1,8 +1,13 @@
 
 ion-item{
-    --background: #3880ff;
-    --color: #fff;
+    // --background: #3880ff;
+    --color: black;
 }
 ion-button{
-    --background: #062f77;
+    --background: #53A318;
+}
+
+.pointer {
+  cursor: pointer;
+  color: white !important;
 }

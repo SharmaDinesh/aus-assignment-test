@@ -1,0 +1,25 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-title style="background-color: #53A318; color:white" justify-content-center>
+      Business And Customer
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="">
+  <ion-grid>
+      <div style="margin-top: 40%">
+          <ion-card  (click)="selectBusiness('business')" style="background-color: #53A318; color:white">
+            <ion-card-content style="text-align: center; padding-top: 60px; padding-bottom: 60px; font-size: 30px;">
+              <span><strong>Business</strong></span>
+            </ion-card-content>
+          </ion-card>
+          
+          <ion-card (click)="selectCustomer('customer')" style="background-color: #53A318; color:white">
+            <ion-card-content style="text-align: center; padding-top: 60px; padding-bottom: 60px; font-size: 30px;">
+              <span><strong>Customer</strong></span>
+            </ion-card-content>
+          </ion-card>
+          </div>
+  </ion-grid>
+</ion-content>
