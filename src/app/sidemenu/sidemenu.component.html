@@ -1,6 +1,6 @@
 
-<ion-header id="content1">
-  <ion-toolbar color="primary">
+<!-- <ion-header id="content1">
+  <ion-toolbar color="primary" mode="md">
     <div>
       <ion-buttons slot="start">
         <ion-menu-button autoHide="false"></ion-menu-button>
@@ -11,6 +11,21 @@
       <span *ngIf="this.currentUser?.role === 'Admin'">{{this.currentUser?.role.charAt(0).toUpperCase() + this.currentUser?.role.slice(1)}} Page</span>
     </ion-title>
   </ion-toolbar>
+</ion-header> -->
+<ion-header id="content1">
+    <ion-toolbar color="primary" mode="ios">
+        <ion-title>
+          <span *ngIf="this.currentUser?.role === 'User'">{{this.currentUser?.role.charAt(0).toUpperCase() + this.currentUser?.role.slice(1)}} Page</span>
+          <span *ngIf="this.currentUser?.role === 'Admin'">{{this.currentUser?.role.charAt(0).toUpperCase() + this.currentUser?.role.slice(1)}} Page</span>
+        </ion-title>
+        <!-- <ion-icon slot="end" name="analytics"></ion-icon> -->
+        <ion-buttons slot="start">
+            <ion-buttons slot="start">
+                <ion-menu-button autoHide="false"></ion-menu-button>
+                <!-- <ion-back-button defaultHref="home"></ion-back-button> -->
+            </ion-buttons>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 <ion-content color="" padding id="content1">
     <app-user  *ngIf="currentUser?.role === 'User'"></app-user>
@@ -20,16 +35,44 @@
 </ion-content>
 
 
-<ion-menu side="start" menuId="first" contentId="content1">
+<ion-menu side="start" menuId="first" contentId="content1" type="overlay">
     <ion-header>
-      <ion-toolbar>
-        <ion-title style="background-color: #53A318; color:white">Menu</ion-title>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
-        <ion-list *ngFor="let menu of menuValue; let i = index">
+    <ion-content no-padding>
+        <!-- <ion-list *ngFor="let menu of menuValue; let i = index">
           <ion-item>{{menu?.menu1}}</ion-item>
           <ion-item>{{menu?.menu2}}</ion-item>
-        </ion-list>
+        </ion-list> -->
+        <ion-list lines="none">
+            <div *ngFor="let group of groups; let i=index">
+              <ion-item class="item-stable" 
+                        (click)="toggleGroup(group)"
+                        [ngClass]="{active: isGroupShown(group)}">Group {{group?.name}} ({{groups.length || 0}})
+                <ion-icon class="icon"  slot="end" [name]="isGroupShown(group) ? 'ios-remove-circle-outline' : 'ios-add-circle-outline'"></ion-icon>
+              </ion-item>
+              
+              <div  *ngIf="isGroupShown(group)">
+                <div *ngFor="let item of group.item; let i=index" >
+                <!-- <p style="--ion-background-color: gray;"></p> -->
+                  <ion-item class="item-accordion" lines="none" 
+                            (click)="xyz(item)" 
+                            [ngClass]="{active: abc(item)}"><span style="margin-left: 25px;">{{item?.name}} ({{group?.item?.length}})</span>
+                    <ion-icon class="icon"  slot="end" [name]="abc(item) ? 'ios-remove-circle-outline' : 'ios-add-circle-outline'"></ion-icon>
+                  </ion-item>
+
+                <div *ngIf="abc(item)">
+                    <ion-item class="item-accordion" *ngFor="let items of item?.item; let i=index" lines="none">
+                        <span style="margin-left: 50px;">{{items?.name}}</span> 
+                    </ion-item>
+                </div>
+                </div>
+              </div>
+            </div>
+          </ion-list>
+      
+        
       </ion-content>
 </ion-menu>

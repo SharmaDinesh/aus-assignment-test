@@ -4,3 +4,14 @@
 .ion-color-primary {
   --ion-color-base:  #53A318 !important;
 }
+
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+
+ion-item .item-accordion{
+  --ion-background-color:#fff;
+}
