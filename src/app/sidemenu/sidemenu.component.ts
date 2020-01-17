@@ -15,12 +15,25 @@ export class SidemenuComponent implements OnInit {
   public shownGroup: any;
   public shownGroup1: any;
   accordionExapanded = false;
+  public products: any;
+
+  sliderConfig = {
+    slidesPerView: 1.6,
+    spaceBetween: 10,
+    centeredSlides: true
+  };
+
 
 
   constructor(private router: Router, public renderer: Renderer) { }
 
   ngOnInit() {
-    
+    this.products =  [
+      { id: 0, name: 'Dinesh', price: '8' },
+      { id: 1, name: 'Manoj', price: '5' },
+      { id: 2, name: 'Arun', price: '9' },
+      { id: 3, name: 'Anand', price: '7' }
+    ]
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
     console.log('currentUser', this.currentUser.role);
     console.log('currentUrl', this.router.url);

@@ -12,22 +12,98 @@
     </ion-title>
   </ion-toolbar>
 </ion-header> -->
-<ion-header id="content1">
-    <ion-toolbar color="primary" mode="ios">
+<ion-header id="content1" >
+    <!-- <ion-toolbar color="primary" mode="ios">
         <ion-title>
           <span *ngIf="this.currentUser?.role === 'User'">{{this.currentUser?.role.charAt(0).toUpperCase() + this.currentUser?.role.slice(1)}} Page</span>
           <span *ngIf="this.currentUser?.role === 'Admin'">{{this.currentUser?.role.charAt(0).toUpperCase() + this.currentUser?.role.slice(1)}} Page</span>
         </ion-title>
-        <!-- <ion-icon slot="end" name="analytics"></ion-icon> -->
+ 
+        
         <ion-buttons slot="start">
             <ion-buttons slot="start">
                 <ion-menu-button autoHide="false"></ion-menu-button>
-                <!-- <ion-back-button defaultHref="home"></ion-back-button> -->
+                <ion-icon slot="end" name="analytics"></ion-icon>
+                <ion-back-button defaultHref="home"></ion-back-button>
             </ion-buttons>
-        </ion-buttons>
-    </ion-toolbar>
+        </ion-buttons> 
+        
+    </ion-toolbar> -->
+
+    <ion-toolbar color="primary" mode="ios">
+        <ion-title>
+            <span *ngIf="this.currentUser?.role === 'User'">{{this.currentUser?.role.charAt(0).toUpperCase() + this.currentUser?.role.slice(1)}} Page</span>
+            <span *ngIf="this.currentUser?.role === 'Admin'">{{this.currentUser?.role.charAt(0).toUpperCase() + this.currentUser?.role.slice(1)}} Page</span>
+          </ion-title>
+          <ion-buttons slot="start">
+              <ion-buttons slot="start">
+                  <ion-menu-button autoHide="false"></ion-menu-button>
+                  <!-- <ion-back-button defaultHref="home"></ion-back-button> -->
+              </ion-buttons>
+          </ion-buttons> 
+      </ion-toolbar>
+      <ion-toolbar color="primary" >
+        
+          <div class="scrollmenu" >
+            <a href="#home">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="#support">Support</a>
+            <a href="#blog">Blog</a>
+            <a href="#tools">Tools</a>  
+            <a href="#base">Base</a>
+            <a href="#custom">Custom</a>
+            <a href="#more">More</a>
+            <a href="#logo">Logo</a>
+            <a href="#friends">Friends</a>
+            <a href="#partners">Partners</a>
+            <a href="#people">People</a>
+            <a href="#work">Work</a>
+          </div>
+      </ion-toolbar>
+    
+      <!-- <div class="scrollmenu" mode="ios">
+        <a href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="#support">Support</a>
+        <a href="#blog">Blog</a>
+        <a href="#tools">Tools</a>  
+        <a href="#base">Base</a>
+        <a href="#custom">Custom</a>
+        <a href="#more">More</a>
+        <a href="#logo">Logo</a>
+        <a href="#friends">Friends</a>
+        <a href="#partners">Partners</a>
+        <a href="#people">People</a>
+        <a href="#work">Work</a>
+      </div> -->
+   
+    
 </ion-header>
-<ion-content color="" padding id="content1">
+<ion-content color="" padding id="content1" >
+<div>
+    <ion-slides [options]="sliderConfig">
+        <ion-slide *ngFor="let product of products">
+
+          <div >
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>
+                  {{ product.name }} - ${{ product.price }}
+                </ion-card-title>
+                <ion-card-content>
+                  <img src="./assets/images/profile-image.jpeg">
+                  <ion-button expand="full" (click)="addToCart(product)">Add to Cart</ion-button>
+                </ion-card-content>
+              </ion-card-header>
+            </ion-card>
+          </div>
+        </ion-slide>
+      </ion-slides>
+</div>
     <app-user  *ngIf="currentUser?.role === 'User'"></app-user>
     <app-admin *ngIf="currentUser?.role === 'Admin' && currentUrl === '/role/admin'"></app-admin>
     <app-profile *ngIf="currentUrl === '/role/Admin/profile'"></app-profile>

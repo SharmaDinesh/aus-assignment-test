@@ -3,6 +3,7 @@
   }
 .ion-color-primary {
   --ion-color-base:  #53A318 !important;
+  // height: 80px;
 }
 
 .list .item.item-accordion {
@@ -15,3 +16,22 @@
 ion-item .item-accordion{
   --ion-background-color:#fff;
 }
+
+div.scrollmenu {
+  background-color: #53A318;
+  overflow: auto;
+  overflow-y: auto;
+  white-space: nowrap;
+  // height: 30px;
+}
+
+div.scrollmenu a {
+  // display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+  // margin-left: 38px;
+}
+
+
