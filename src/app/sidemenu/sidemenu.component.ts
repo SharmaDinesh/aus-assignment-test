@@ -1,13 +1,30 @@
 import { Component, OnInit, ViewChild, Renderer, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConditionalExpr } from '@angular/compiler';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Base64 } from '@ionic-native/base64/ngx';
+import { DomSanitizer } from '@angular/platform-browser';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-sidemenu',
   templateUrl: './sidemenu.component.html',
   styleUrls: ['./sidemenu.component.scss'],
+  animations: [
+    trigger('myanimation',[
+       state('inMobile',style({
+          transform : 'translate3d(0,0,0)'
+       })),
+       state('outMobile',style({
+          transform : 'translate3d(0, 100%, 0)'
+       })),
+       transition('inMobile <=> outMobile',animate('400ms ease-in-out')),
+       transition('outMobile <=> inMobile',animate('400ms ease-in-out'))
+    ]),
+ ],
 })
 export class SidemenuComponent implements OnInit {
+  public menuState: any;
   public currentUser: any
   public currentUrl: any;
   public menuValue: any
@@ -16,6 +33,8 @@ export class SidemenuComponent implements OnInit {
   public shownGroup1: any;
   accordionExapanded = false;
   public products: any;
+  public base64Image: any;
+  public memuState: any;
 
   sliderConfig = {
     slidesPerView: 1.6,
@@ -25,9 +44,11 @@ export class SidemenuComponent implements OnInit {
 
 
 
-  constructor(private router: Router, public renderer: Renderer) { }
+  constructor(private router: Router, public renderer: Renderer, private camera: Camera, 
+    private base64: Base64, private sanitizer: DomSanitizer ) { }
 
   ngOnInit() {
+    this.menuState = 'outMobile'
     this.products =  [
       { id: 0, name: 'Dinesh', price: '8' },
       { id: 1, name: 'Manoj', price: '5' },
@@ -364,6 +385,39 @@ export class SidemenuComponent implements OnInit {
 
   abc(value) {
     return this.shownGroup1 === value;
+  }
+
+  openCamera() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      allowEdit: true,
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // For base64 use (DATA_URL): and For url use (FILE_URL)
+     const image = 'data:image/jpeg;base64,' + imageData;
+     this.base64Image = image;
+      console.log('imageData', this.base64Image);
+    }, (err) => {
+     // Handle error
+    });
+  }
+
+  // animate() {
+  //   this.menuState = this.menuState == 'inMobile' ? 'inMobile' : 'inMobile';
+  // }
+
+  receiveMessage($event: any) {
+    console.log('$event', $event)
+    this.menuState = $event
+  }
+  closeMessage($event: any) {
+    console.log('$event', $event)
+    this.menuState = $event
   }
 
 

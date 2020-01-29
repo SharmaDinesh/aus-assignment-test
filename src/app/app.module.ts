@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -21,15 +22,20 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { BusinessAndCustomerComponent } from './business-and-customer/business-and-customer.component';
 import { SignupComponent } from './signup/signup.component';
 import { TabsComponent } from './tabs/tabs.component';
-import { ProfileComponent } from './profile/profile.component'
+import { ProfileComponent } from './profile/profile.component';
+import { Base64 } from '@ionic-native/base64/ngx';
+
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent, UserComponent, AdminComponent, SidemenuComponent, BusinessAndCustomerComponent,
                  SignupComponent, TabsComponent, ProfileComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule,
-    ReactiveFormsModule,],
+    ReactiveFormsModule, BrowserAnimationsModule, ],
   providers: [
+    Camera,
+    Base64,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

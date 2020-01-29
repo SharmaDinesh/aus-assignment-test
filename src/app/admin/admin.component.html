@@ -1,8 +1,7 @@
-
-  <ion-grid>
-    <ion-row color="primary" justify-content-center>
-      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-        <div text-center>
+  <!-- <ion-grid>
+    <ion-row color="primary" >
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12"> -->
+        <!-- <div text-center>
             <ion-card>
                 <img src="./assets/images/profile-image.jpeg"/>
                 <ion-card-content>
@@ -15,36 +14,37 @@
                   </p>
                 </ion-card-content>
               </ion-card>
-        </div>
-        <div text-center class="card-background-page">
+        </div> -->
+        <!-- <div text-center class="card-background-page">
             <ion-card>
                 <img src="./assets/images/card-image.jpeg"/>
                 <div class="card-title">São Paulo</div>
                 <div class="card-subtitle">41 Listings</div>
               </ion-card>
-        </div>
+        </div> -->
         <div>
             <ion-card>
 
-                <ion-item>
+                <!-- <ion-item>
                   <ion-avatar item-start>
                     <img src="./assets/images/profile-image.jpeg">
                   </ion-avatar>
                   <h2>Marty McFly</h2>
                   <p>November 5, 1955</p>
-                </ion-item>
+                </ion-item> -->
               
-                <img src="./assets/images/card-image.jpeg">
+                <img (click)="animate()" style="height: 250px;" src="./assets/images/card-image.jpeg">
               
                 <ion-card-content>
-                  <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+                    <p><strong>Business Name</strong></p>
+                    <p><strong>Address (6.0 Km)</strong></p>
                 </ion-card-content>
               
                 <ion-row>
                   <ion-col>
                     <button ion-button icon-start clear small>
-                      <ion-icon name="thumbs-up"></ion-icon>
-                      <div>12 Likes</div>
+                      <ion-icon name="eye"></ion-icon>
+                      <div>12 Views</div>
                     </button>
                   </ion-col>
                   <ion-col>
@@ -61,10 +61,43 @@
                 </ion-row>
               
               </ion-card>
+
+              <ion-card>
+                  <img style="height: 250px;" src="./assets/images/profile-image.jpeg">
+                
+                  <ion-card-content>
+                    <p><strong>Business Name</strong></p>
+                    <p><strong>Address (6.0 Km)</strong></p>
+                  </ion-card-content>
+                
+                  <ion-row>
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <ion-icon name="eye"></ion-icon>
+                        <div>12 Views</div>
+                      </button>
+                    </ion-col>
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <ion-icon name="text"></ion-icon>
+                        <div>4 Comments</div>
+                      </button>
+                    </ion-col>
+                    <ion-col align-self-center text-center>
+                      <ion-note>
+                        11h ago
+                      </ion-note>
+                    </ion-col>
+                  </ion-row>
+                
+                </ion-card>
         </div>
        
-        </ion-col>
+        <!-- </ion-col>
     </ion-row> 
-  </ion-grid>
+  </ion-grid> -->
 
+  <!-- <app-profile class="right-side-nav" [@myanimation]= "menuState === 'inMobile'"></app-profile> -->
   
+
+ 

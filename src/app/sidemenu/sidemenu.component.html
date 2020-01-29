@@ -13,6 +13,7 @@
   </ion-toolbar>
 </ion-header> -->
 <ion-header id="content1" >
+     
     <!-- <ion-toolbar color="primary" mode="ios">
         <ion-title>
           <span *ngIf="this.currentUser?.role === 'User'">{{this.currentUser?.role.charAt(0).toUpperCase() + this.currentUser?.role.slice(1)}} Page</span>
@@ -42,13 +43,41 @@
               </ion-buttons>
           </ion-buttons> 
       </ion-toolbar>
-      <ion-toolbar color="primary" >
+      <ion-toolbar color="primary" style="height: 55px;">
+        <ion-tabs>
+          <ion-tab-bar slot="bottom" style="background-color: #53A318;">
+            <ion-tab-button tab="role/{{this?.currentUser?.role.charAt(0).toLowerCase() + this.currentUser?.role.slice(1)}}" style="background-color: #53A318; color: #FFFFFF" 
+                            [ngClass]="{'active': activeId === 1 }" id="1" (click)="goToHome(1)">
+              <ion-icon name="home"></ion-icon>
+              <ion-label style="font-size: 12px;"><strong>Home</strong></ion-label>
+              <!-- <ion-badge>6</ion-badge> -->
+            </ion-tab-button>
         
-          <div class="scrollmenu" >
+            <ion-tab-button tab="map" style="background-color: #53A318; color: #FFFFFF" 
+                            [ngClass]="{'active': activeId === 4 }" id="2" (click)="openCamera()">
+              <ion-icon name="contacts"></ion-icon>
+              <ion-label style="font-size: 12px;"><strong>Profile</strong></ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="role/{{this?.currentUser?.role}}/profile" style="background-color: #53A318; color: #FFFFFF" 
+                            [ngClass]="{'active': activeId === 4 }" id="4" (click)="goToProfile(4)">
+                <ion-icon name="save"></ion-icon>
+                <ion-label style="font-size: 12px;"><strong>Saved</strong></ion-label>
+            </ion-tab-button>
+            
+            <ion-tab-button tab="about" style="background-color: #53A318; color: #FFFFFF" 
+                            [ngClass]="{'active': activeId === 1 }" id="3" (click)="goToHome(1)">
+                           
+              <ion-icon name="information-circle"></ion-icon>
+             <ion-label style="font-size: 12px;"><strong>Interest</strong></ion-label>
+            </ion-tab-button>
+            
+          </ion-tab-bar>
+        </ion-tabs>
+          <!-- <div class="scrollmenu" >
             <a href="#home">Home</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
+            <a href="#news">My Profile</a>
+            <a href="#contact">Personalised Advertisement</a>
+            <a href="#about">Saved</a>
             <a href="#support">Support</a>
             <a href="#blog">Blog</a>
             <a href="#tools">Tools</a>  
@@ -59,54 +88,50 @@
             <a href="#friends">Friends</a>
             <a href="#partners">Partners</a>
             <a href="#people">People</a>
-            <a href="#work">Work</a>
-          </div>
+            <a href="#work">Work</a> 
+          </div> -->
       </ion-toolbar>
-    
-      <!-- <div class="scrollmenu" mode="ios">
-        <a href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a href="#support">Support</a>
-        <a href="#blog">Blog</a>
-        <a href="#tools">Tools</a>  
-        <a href="#base">Base</a>
-        <a href="#custom">Custom</a>
-        <a href="#more">More</a>
-        <a href="#logo">Logo</a>
-        <a href="#friends">Friends</a>
-        <a href="#partners">Partners</a>
-        <a href="#people">People</a>
-        <a href="#work">Work</a>
-      </div> -->
-   
-    
 </ion-header>
-<ion-content color="" padding id="content1" >
-<div>
-    <ion-slides [options]="sliderConfig">
-        <ion-slide *ngFor="let product of products">
+<ion-content color=""  id="content1" >
+    <!-- <div (click)="openCamera()">
+        <span class="input-placeholder-size" >
+          <button id="inputFileToLoad" class="custom-buttom button1">Add Advertise</button>
+        </span>
+    </div><br /> -->
+    <!-- <ion-card *ngIf="base64Image">
+      <ion-card-header>
+        <ion-card-title>
+        </ion-card-title>
+        <ion-card-content>
+          <img *ngIf="base64Image" [src]="base64Image" />
+          <ion-button expand="full" (click)="addToCart(product)">Add to Cart</ion-button>
+        </ion-card-content>
+      </ion-card-header>
+    </ion-card> -->
+    <!-- <div *ngIf="currentUser?.role === 'Admin' && currentUrl === '/role/admin'">
+        <ion-slides [options]="sliderConfig">
+            <ion-slide *ngFor="let product of products">
 
-          <div >
-            <ion-card>
-              <ion-card-header>
-                <ion-card-title>
-                  {{ product.name }} - ${{ product.price }}
-                </ion-card-title>
-                <ion-card-content>
-                  <img src="./assets/images/profile-image.jpeg">
-                  <ion-button expand="full" (click)="addToCart(product)">Add to Cart</ion-button>
-                </ion-card-content>
-              </ion-card-header>
-            </ion-card>
-          </div>
-        </ion-slide>
-      </ion-slides>
-</div>
+              <div >
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>
+                      {{ product.name }} - ${{ product.price }}
+                    </ion-card-title>
+                    <ion-card-content>
+                      <img src="./assets/images/profile-image.jpeg">
+                      <ion-button expand="full" (click)="addToCart(product)">Add to Cart</ion-button>
+                    </ion-card-content>
+                  </ion-card-header>
+                </ion-card>
+              </div>
+            </ion-slide>
+          </ion-slides>
+    </div> -->
     <app-user  *ngIf="currentUser?.role === 'User'"></app-user>
-    <app-admin *ngIf="currentUser?.role === 'Admin' && currentUrl === '/role/admin'"></app-admin>
+    <app-admin (messageEvent)="receiveMessage($event)" *ngIf="currentUser?.role === 'Admin' && currentUrl === '/role/admin'"></app-admin>
     <app-profile *ngIf="currentUrl === '/role/Admin/profile'"></app-profile>
+    <app-profile (closeEvent)="closeMessage($event)" class="right-side-nav" [@myanimation]= "menuState"></app-profile>
 
 </ion-content>
 

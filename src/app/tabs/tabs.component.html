@@ -1,58 +1,14 @@
 
-<!-- <ion-tabs>
-
-   <ion-tab-bar slot="bottom">
-   <ion-tab-button tab="tab1">
-   <ion-icon name="flash"></ion-icon>
-   <ion-label>Tab One</ion-label>
-   </ion-tab-button>
-  
-   <ion-tab-button tab="tab2">
-   <ion-icon name="apps"></ion-icon>
-   <ion-label>Tab Two</ion-label>
-  </ion-tab-button>
-  
-   <ion-tab-button tab="tab3">
-   <ion-icon name="send"></ion-icon>
-   <ion-label>Tab Three</ion-label>
-   </ion-tab-button>
-  </ion-tab-bar>
-  
-  </ion-tabs> -->
-  <!-- <ion-tabs>
-
-      <ion-tab-bar slot="bottom" color="primary">
-        <ion-tab-button tab="tab1">
-          <ion-icon name="home"></ion-icon>
-          <ion-label>Home</ion-label>
-        </ion-tab-button>
-    
-        <ion-tab-button tab="tab2">
-          <ion-icon name="apps"></ion-icon>
-          <ion-label>Feed</ion-label>
-        </ion-tab-button>
-    
-        <ion-tab-button tab="tab3">
-          <ion-icon name="settings"></ion-icon>
-          <ion-label>Settings</ion-label>
-        </ion-tab-button>
-      </ion-tab-bar>
-    
-    </ion-tabs> -->
     <ion-tabs>
         <ion-tab-bar slot="bottom" style="background-color: #FFFFFF;">
           <ion-tab-button tab="role/{{this?.currentUser?.role.charAt(0).toLowerCase() + this.currentUser?.role.slice(1)}}" style="background-color: #FFFFFF; color: gray" 
                           [ngClass]="{'active': activeId === 1 }" id="1" (click)="goToHome(1)">
-            <ion-icon name="home"></ion-icon>
-            <ion-label>Home</ion-label>
+            <ion-icon name="logo-game-controller-b"></ion-icon>
+            <ion-label>Entertainment</ion-label>
             <!-- <ion-badge>6</ion-badge> -->
           </ion-tab-button>
       
-          <!-- <ion-tab-button tab="map" style="background-color: #FFFFFF; color: gray" 
-                          [ngClass]="{'active': activeId === 4 }" id="2" (click)="goToProfile(4)">
-            <ion-icon name="map"></ion-icon>
-            <ion-label>Map</ion-label>
-          </ion-tab-button> -->
+         
       
           <!-- <ion-tab-button tab="about" style="background-color: #FFFFFF; color: gray" 
                           [ngClass]="{'active': activeId === 1 }" id="3" (click)="goToHome(1)">
@@ -61,8 +17,18 @@
           </ion-tab-button> -->
           <ion-tab-button tab="role/{{this?.currentUser?.role}}/profile" style="background-color: #FFFFFF; color: gray" 
                           [ngClass]="{'active': activeId === 4 }" id="4" (click)="goToProfile(4)">
-              <ion-icon name="contacts"></ion-icon>
-              <ion-label>Profile</ion-label>
+              <ion-icon name="search"></ion-icon>
+              <ion-label>Search</ion-label>
             </ion-tab-button>
+            <ion-tab-button tab="map" style="background-color: #FFFFFF; color: gray" 
+                            [ngClass]="{'active': activeId === 4 }" id="2" (click)="openCamera()">
+              <ion-icon name="notifications"></ion-icon>
+              <ion-label>Notification</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="map" style="background-color: #FFFFFF; color: gray" 
+                          [ngClass]="{'active': activeId === 4 }" id="2" (click)="openCamera()">
+            <ion-icon name="camera"></ion-icon>
+            <ion-label>Post Add</ion-label>
+          </ion-tab-button>
         </ion-tab-bar>
       </ion-tabs>
