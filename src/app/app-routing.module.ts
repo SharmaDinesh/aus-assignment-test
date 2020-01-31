@@ -6,6 +6,7 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component'
 import { BusinessAndCustomerComponent } from './business-and-customer/business-and-customer.component'
 import { SignupComponent } from './signup/signup.component'
 import { ProfileComponent } from './profile/profile.component'
+import { AdvertisementInfoComponent } from './advertisement-info/advertisement-info.component'
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'user', component: UserComponent, pathMatch: 'full' },
       { path: 'admin', component: AdminComponent, pathMatch: 'full' },
       { path: ':findProfile/profile', component: ProfileComponent, pathMatch: 'full' },
+      // { path: 'AddInfo', component: AdvertisementInfoComponent, pathMatch: 'full' },
     ]
   },
   { path: 'select/role', component: BusinessAndCustomerComponent, pathMatch: 'full'},

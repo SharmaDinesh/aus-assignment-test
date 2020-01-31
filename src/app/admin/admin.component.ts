@@ -24,8 +24,10 @@ export class AdminComponent implements OnInit {
 
   public currentUser: any;
   public menuState = 'outMobile';
+  public demostring: any;
   // @Input() menuState: any;
   @Output() messageEvent = new EventEmitter<string>();
+  @Output() demoObj = new EventEmitter<string>();
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
@@ -35,10 +37,12 @@ export class AdminComponent implements OnInit {
     console.log('=========>', this.currentUser.role)
   }
 
-  animate() {
+  openAddInfo(value: any) {
     this.menuState = this.menuState == 'inMobile' ? 'inMobile' : 'inMobile';
+    this.demostring = {value: value, menuState: this.menuState}
     console.log('this.menuState', this.menuState);
     this.messageEvent.emit(this.menuState)
+    this.demoObj.emit(this.demostring)
   }
 
 

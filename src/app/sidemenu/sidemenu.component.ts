@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Renderer, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConditionalExpr } from '@angular/compiler';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
@@ -35,6 +35,7 @@ export class SidemenuComponent implements OnInit {
   public products: any;
   public base64Image: any;
   public memuState: any;
+  public menuStates: any;
 
   sliderConfig = {
     slidesPerView: 1.6,
@@ -56,12 +57,10 @@ export class SidemenuComponent implements OnInit {
       { id: 3, name: 'Anand', price: '7' }
     ]
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
-    console.log('currentUser', this.currentUser.role);
-    console.log('currentUrl', this.router.url);
     this.stateUrlAccess();
     if(this.currentUser.role === 'Admin') {
       this.router.navigate(['role/admin']);
-      this.currentUrl = this.router.url 
+      this.currentUrl = this.router.url
       this.groups = [{
           "name": "top-menu-1",
           "item": [
@@ -325,7 +324,6 @@ export class SidemenuComponent implements OnInit {
         }
       
       ];
-      console.log('this.groups', this.groups)
       // for (var i=0; i<10; i++) {
       //   this.groups[i] = {
       //     name: i,
@@ -339,7 +337,6 @@ export class SidemenuComponent implements OnInit {
         menu1: 'Profile',
         menu2: 'Dashboard'
       }]
-      console.log('this.menuValue', this.menuValue);
     }else {
       this.router.navigate(['role/user']);
       this.currentUrl = this.router.url
@@ -355,7 +352,6 @@ export class SidemenuComponent implements OnInit {
     this.router.events.subscribe((url:any) => {
       if(url.url === undefined) {
         this.currentUrl = this.router.url;
-        console
       }else {
         this.currentUrl = url.url;
       }
@@ -363,7 +359,6 @@ export class SidemenuComponent implements OnInit {
   }
 
   toggleGroup(group) {
-    console.log('group', group);
     if (this.isGroupShown(group)) {
         this.shownGroup = null;
     } else {
@@ -375,7 +370,6 @@ export class SidemenuComponent implements OnInit {
     return this.shownGroup === group;
   };
   xyz(value) {
-    console.log('value', value);
     if (this.abc(value)) {
       this.shownGroup1 = null;
   } else {
@@ -415,10 +409,18 @@ export class SidemenuComponent implements OnInit {
     console.log('$event', $event)
     this.menuState = $event
   }
+
+  receiveObj($event: any) {
+    console.log('$event************>', $event)
+    this.menuStates = $event
+  }
+
   closeMessage($event: any) {
     console.log('$event', $event)
     this.menuState = $event
   }
+
+
 
 
 }

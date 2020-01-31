@@ -22,14 +22,16 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { BusinessAndCustomerComponent } from './business-and-customer/business-and-customer.component';
 import { SignupComponent } from './signup/signup.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { PersonaliseTabComponent } from './personalise-tab/personalise-tab.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdvertisementInfoComponent } from './advertisement-info/advertisement-info.component'
 import { Base64 } from '@ionic-native/base64/ngx';
 
 import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent, UserComponent, AdminComponent, SidemenuComponent, BusinessAndCustomerComponent,
-                 SignupComponent, TabsComponent, ProfileComponent],
+                 SignupComponent, TabsComponent, ProfileComponent, AdvertisementInfoComponent, PersonaliseTabComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule,
     ReactiveFormsModule, BrowserAnimationsModule, ],

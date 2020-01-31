@@ -44,35 +44,9 @@
           </ion-buttons> 
       </ion-toolbar>
       <ion-toolbar color="primary" style="height: 55px;">
-        <ion-tabs>
-          <ion-tab-bar slot="bottom" style="background-color: #53A318;">
-            <ion-tab-button tab="role/{{this?.currentUser?.role.charAt(0).toLowerCase() + this.currentUser?.role.slice(1)}}" style="background-color: #53A318; color: #FFFFFF" 
-                            [ngClass]="{'active': activeId === 1 }" id="1" (click)="goToHome(1)">
-              <ion-icon name="home"></ion-icon>
-              <ion-label style="font-size: 12px;"><strong>Home</strong></ion-label>
-              <!-- <ion-badge>6</ion-badge> -->
-            </ion-tab-button>
-        
-            <ion-tab-button tab="map" style="background-color: #53A318; color: #FFFFFF" 
-                            [ngClass]="{'active': activeId === 4 }" id="2" (click)="openCamera()">
-              <ion-icon name="contacts"></ion-icon>
-              <ion-label style="font-size: 12px;"><strong>Profile</strong></ion-label>
-            </ion-tab-button>
-            <ion-tab-button tab="role/{{this?.currentUser?.role}}/profile" style="background-color: #53A318; color: #FFFFFF" 
-                            [ngClass]="{'active': activeId === 4 }" id="4" (click)="goToProfile(4)">
-                <ion-icon name="save"></ion-icon>
-                <ion-label style="font-size: 12px;"><strong>Saved</strong></ion-label>
-            </ion-tab-button>
-            
-            <ion-tab-button tab="about" style="background-color: #53A318; color: #FFFFFF" 
-                            [ngClass]="{'active': activeId === 1 }" id="3" (click)="goToHome(1)">
-                           
-              <ion-icon name="information-circle"></ion-icon>
-             <ion-label style="font-size: 12px;"><strong>Interest</strong></ion-label>
-            </ion-tab-button>
-            
-          </ion-tab-bar>
-        </ion-tabs>
+          <div *ngIf="currentUrl === '/role/admin' || currentUrl === '/role/Admin/profile' ">
+            <app-personalise-tab></app-personalise-tab>
+          </div>
           <!-- <div class="scrollmenu" >
             <a href="#home">Home</a>
             <a href="#news">My Profile</a>
@@ -129,9 +103,9 @@
           </ion-slides>
     </div> -->
     <app-user  *ngIf="currentUser?.role === 'User'"></app-user>
-    <app-admin (messageEvent)="receiveMessage($event)" *ngIf="currentUser?.role === 'Admin' && currentUrl === '/role/admin'"></app-admin>
+    <app-admin (messageEvent)="receiveMessage($event)" (demoObj)= "receiveObj($event)" *ngIf="currentUser?.role === 'Admin' && currentUrl === '/role/admin'"></app-admin>
     <app-profile *ngIf="currentUrl === '/role/Admin/profile'"></app-profile>
-    <app-profile (closeEvent)="closeMessage($event)" class="right-side-nav" [@myanimation]= "menuState"></app-profile>
+    <app-advertisement-info (closeEvent)="closeMessage($event)" class="right-side-nav" [@myanimation]= "menuState"></app-advertisement-info>
 
 </ion-content>
 

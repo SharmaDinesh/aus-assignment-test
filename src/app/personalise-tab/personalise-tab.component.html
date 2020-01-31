@@ -1,0 +1,29 @@
+<ion-tabs tabbarPlacement="top">
+    <ion-tab-bar slot="top" style="background-color: #53A318;">
+      <ion-tab-button style="background-color: #53A318; color: #FFFFFF" 
+                       id="1" (click)="goToHome(1)">
+        <ion-icon name="home"></ion-icon>
+        <ion-label style="font-size: 12px;"><strong>Home</strong></ion-label>
+        <!-- <ion-badge>6</ion-badge> -->
+      </ion-tab-button>
+  
+      <ion-tab-button  style="background-color: #53A318; color: #FFFFFF" 
+                       id="2" (click)="goToProfile(2)">
+        <ion-icon name="contacts"></ion-icon>
+        <ion-label style="font-size: 12px;"><strong>Profile</strong></ion-label>
+      </ion-tab-button>
+      <ion-tab-button  style="background-color: #53A318; color: #FFFFFF" 
+                       id="3" (click)="goToSave(3)">
+          <ion-icon name="save"></ion-icon>
+          <ion-label style="font-size: 12px;"><strong>Saved</strong></ion-label>
+      </ion-tab-button>
+      
+      <ion-tab-button tab="about" style="background-color: #53A318; color: #FFFFFF" 
+                       id="4" (click)="goToInterest(4)">
+                     
+        <ion-icon name="information-circle"></ion-icon>
+       <ion-label style="font-size: 12px;"><strong>Interest</strong></ion-label>
+      </ion-tab-button>
+      
+    </ion-tab-bar>
+  </ion-tabs>
